@@ -98,7 +98,7 @@ public class MathGameAutomation {
 		String url = "https://mathgameleechow.azurewebsites.net/login.php";
 		
 		System.setProperty("webdriver.chrome.driver", 
-				"D:/chromedriver_win32/chromedriver.exe");
+				"./chromedriver_win32/chromedriver.exe");
 		
 		WebDriver driver1 = new ChromeDriver();
 		
