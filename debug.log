@@ -1,0 +1,10 @@
+[0715/023721.439:ERROR:process_info.cc(329)] VirtualQueryEx: Access is denied. (0x5)
+[0715/023721.441:ERROR:process_info.cc(550)] ReadMemoryInfo failed
+[0715/023721.446:ERROR:process_reader_win.cc(108)] process 9888 not found
+[0715/023721.446:ERROR:exception_snapshot_win.cc(88)] thread ID 5240 not found in process
+[0715/023721.446:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0716/073651.632:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[0716/073652.000:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[0716/073653.238:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[0716/073653.864:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[0716/073653.911:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
