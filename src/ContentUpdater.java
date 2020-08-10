@@ -56,11 +56,12 @@ public class ContentUpdater {
 				searchbar.sendKeys(adapterTitle);
 				Thread.sleep(3000);
 				
-				/**
-				 * image populater
+				
 				WebElement adapter = driver1.findElement(By.xpath("/html/body/div/div/div[3]/main/div[2]/div[3]/div/div[1]/div[1]/div/table/tbody/tr/td[2]/div/div/span/a"));
 				adapter.click();
 				Thread.sleep(3000);
+				/**
+				 * image populater
 				WebElement addImage = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[8]/div[2]/div/div[2]/div[1]/div[1]"));
 				addImage.click();
 				Thread.sleep(3000);
@@ -74,58 +75,58 @@ public class ContentUpdater {
 				selectIamgeButton.click();
 				Thread.sleep(3000);
 				*/
+				/** 
+				 * Uncomment on Monday
 				WebElement addRelatedProduct = driver1.findElement(By.xpath("//*[@id=\"fields-productRelatedProducts\"]/div[2]"));
 				addRelatedProduct.click();
-				Thread.sleep(3000);
-				WebElement relatedProductSearch = driver1.findElement(By.xpath("/html/body/div[6]/div[1]/div/div[2]/div[1]/div[3]/input"));
-				relatedProductSearch.sendKeys("C7200");
-				Thread.sleep(3000);
+				Thread.sleep(5000);
+				WebElement relatedProductSearch = driver1.findElement(By.xpath("/html/body/div[4]/div[1]/div/div[2]/div[1]/div[3]/input"));
+				relatedProductSearch.click();
+				relatedProductSearch.sendKeys("C7400");
+				Thread.sleep(2000);
 				WebElement selectRelatedProduct = driver1.findElement(By.xpath("/html/body/div[4]/div[1]/div/div[2]/div[2]/div/table/tbody/tr[1]/td[1]/div/div/span"));
 				selectRelatedProduct.click();
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 				WebElement selectProductFinalButton = driver1.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[2]"));
 				selectProductFinalButton.click();
 				Thread.sleep(3000);
 				
-				
 				addRelatedProduct = driver1.findElement(By.xpath("//*[@id=\"fields-productRelatedProducts\"]/div[2]"));
 				addRelatedProduct.click();
-				Thread.sleep(3000);
-				relatedProductSearch = driver1.findElement(By.xpath("/html/body/div[4]/div[1]/div/div[2]/div[1]/div[3]/input"));
-				relatedProductSearch.sendKeys("C7400");
-				Thread.sleep(3000);
-				selectRelatedProduct = driver1.findElement(By.xpath("/html/body/div[4]/div[1]/div/div[2]/div[2]/div/table/tbody/tr[1]/td[1]/div/div/span"));
-				selectRelatedProduct.click();
-				Thread.sleep(3000);
-				selectProductFinalButton = driver1.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[2]"));
-				selectProductFinalButton.click();
-				Thread.sleep(3000);
-				
-				
-				addRelatedProduct = driver1.findElement(By.xpath("//*[@id=\"fields-productRelatedProducts\"]/div[2]"));
-				addRelatedProduct.click();
-				Thread.sleep(3000);
-				relatedProductSearch = driver1.findElement(By.xpath("/html/body/div[4]/div[1]/div/div[2]/div[1]/div[3]/input"));
-				relatedProductSearch.sendKeys("C7400");
-				Thread.sleep(3000);
-				selectRelatedProduct = driver1.findElement(By.xpath("/html/body/div[4]/div[1]/div/div[2]/div[2]/div/table/tbody/tr[1]/td[1]/div/div/span"));
-				selectRelatedProduct.click();
-				Thread.sleep(3000);
-				selectProductFinalButton = driver1.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[2]"));
-				selectProductFinalButton.click();
-				Thread.sleep(3000);
-				
-				WebElement saveButton = driver1.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div[2]/input"));
-				saveButton.click();
 				Thread.sleep(5000);
+				relatedProductSearch = driver1.findElement(By.xpath("/html/body/div[4]/div[1]/div/div[2]/div[1]/div[3]/input"));
+				relatedProductSearch.click();
+				relatedProductSearch.clear();
+				relatedProductSearch.sendKeys("C7400er");
+				Thread.sleep(2000);
+				selectRelatedProduct = driver1.findElement(By.xpath("/html/body/div[4]/div[1]/div/div[2]/div[2]/div/table/tbody/tr[1]/td[1]/div/div/span"));
+				selectRelatedProduct.click();
+				Thread.sleep(2000);
+				selectProductFinalButton = driver1.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[2]"));
+				selectProductFinalButton.click();
+				Thread.sleep(3000);
+				*/
 				
+				//Saving
+				//WebElement saveButton = driver1.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div[2]/input"));
+				//saveButton.click();
+				//Thread.sleep(4000);
+				
+				WebElement productDescription = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[6]/div[2]/div/textarea"));
+			    
+			    WebElement productDescription1 = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[6]/div[2]/div/div[2]"));
+			    String textagain = productDescription1.getAttribute("value");
+			    System.out.println(textagain);
+			    productDescription1.click();
+			    productDescription1.clear();
+			    productDescription1.sendKeys("<p>Kyocera, BP-820, Li, 3.6, 750 \nfor Kyocera KZ-820 <b>bold</b></p>");
 				
 				
 			} catch (Exception e) {
 				System.out.println("Adapter " + adapterTitle + " didn't finish correctly");
 				System.out.println(e);
 			} finally {
-				driver1.close();
+				//driver1.close();
 			}
 		}
 		
