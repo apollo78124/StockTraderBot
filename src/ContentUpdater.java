@@ -15,42 +15,43 @@ public class ContentUpdater {
 	public static void main(String[] args) throws FileNotFoundException, InterruptedException {
 		// TODO Auto-generated method stub
 		Scanner inFile1;
+		String userName = "";
+		String password = "";
+		String mainUrl = "";
+		String productUrl = "";
 		ArrayList<String> adapters = new ArrayList<String>();
 		System.setProperty("webdriver.chrome.driver", 
 				"./chromedriver.exe");
+		
+		WebDriver driver1 = new ChromeDriver();
+		driver1.get(mainUrl);
+		
+		Thread.sleep(1000);
+		WebElement loginput = driver1.findElement(By.id("loginName"));
+		loginput.sendKeys(userName);
+		
+		Thread.sleep(200);
+		
+		WebElement passwordInput = driver1.findElement(By.id("password"));
+		passwordInput.sendKeys(password);
+		
+		Thread.sleep(500); 
+		
+		WebElement logInButton = driver1.findElement(By.id("login-form"));
+		logInButton.submit();
+		
 		inFile1 = new Scanner(new File("ExistingAdapter.txt"));
 		while(inFile1.hasNextLine()) {
             adapters.add(inFile1.nextLine());
         }
 		inFile1.close();
-		WebDriver driver1 = new ChromeDriver();
 		
-		  // Let the user actually see something!
-		
+		Thread.sleep(4000);
 		
 		for(String adapterTitle : adapters) {
 			try {
-				driver1 = new ChromeDriver();
-				driver1.get("");
 				
-				Thread.sleep(1000);
-				WebElement loginput = driver1.findElement(By.id("loginName"));
-				loginput.sendKeys("");
-				
-				Thread.sleep(200);
-				
-				WebElement passwordInput = driver1.findElement(By.id("password"));
-				passwordInput.sendKeys("");
-				
-				Thread.sleep(500); 
-				
-				WebElement logInButton = driver1.findElement(By.id("login-form"));
-				logInButton.submit();
-				
-				
-				Thread.sleep(3000);
-				
-				driver1.get("");
+				driver1.get(productUrl);
 				Thread.sleep(4000);
 				WebElement searchbar = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/div[1]/header/div[2]/div[2]/input"));
 
@@ -128,8 +129,23 @@ public class ContentUpdater {
 			} catch (Exception e) {
 				System.out.println("Adapter " + adapterTitle + " didn't finish correctly");
 				System.out.println(e);
-			} finally {
+
 				driver1.close();
+				
+				driver1 = new ChromeDriver();
+				driver1.get(mainUrl);
+				
+				Thread.sleep(4000);
+				loginput = driver1.findElement(By.id("loginName"));
+				loginput.sendKeys(userName);
+				
+				passwordInput = driver1.findElement(By.id("password"));
+				passwordInput.sendKeys(password);
+				
+				logInButton = driver1.findElement(By.id("login-form"));
+				logInButton.submit();
+				Thread.sleep(4000);
+			} finally {
 			}
 		}
 		
