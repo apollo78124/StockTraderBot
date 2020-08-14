@@ -1,28 +1,27 @@
+import java.util.ArrayList;
 
 public class Adapter {
 	public String SKU;
 	public String UsedIn;
-	public String Company;
-	public String BatteryModels;
-	public String Chem;
+	public String Title;
+	public String Status;
+	
+
+	public ArrayList<String> Company;
+	public ArrayList<String> BatteryModels;
+	public ArrayList<String> Chem;
 	public String Volts;
 	public String mAh;
 	public String Category;
+	
+
 	public String PriceCode;
 	public String USPrice;
 	public String CADPrice;
 	
-	public Adapter(String sKU, String usedIn, String company, String batteryModels, String chem, String volts,
-			String mAh, String category, String priceCode) {
-		SKU = sKU;
-		UsedIn = usedIn;
-		Company = company;
-		BatteryModels = batteryModels;
-		Chem = chem;
-		Volts = volts;
-		this.mAh = mAh;
-		Category = category;
-		PriceCode = priceCode;
+	public Adapter() {
+		Company = new ArrayList<String>();
+		BatteryModels = new ArrayList<String>();
 	}
 	
 	public String convertCodeToCADPrice(String code) {
@@ -84,6 +83,23 @@ public class Adapter {
 	}
 	
 
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	
+	public String getTitle() {
+		return Title;
+	}
+
+	public void setTitle(String title) {
+		Title = title;
+	}
+
 	public String getSKU() {
 		return SKU;
 	}
@@ -100,28 +116,37 @@ public class Adapter {
 		UsedIn = usedIn;
 	}
 
-	public String getCompany() {
+	public ArrayList<String> getCompany() {
 		return Company;
 	}
 
 	public void setCompany(String company) {
-		Company = company;
+		if (company == null || Company.contains(company)) {
+			return;
+		}
+		Company.add(company);
 	}
 
-	public String getBatteryModels() {
+	public ArrayList<String> getBatteryModels() {
 		return BatteryModels;
 	}
 
 	public void setBatteryModels(String batteryModels) {
-		BatteryModels = batteryModels;
+		if (batteryModels == null ||BatteryModels.contains(batteryModels)) {
+			return;
+		}
+		BatteryModels.add(batteryModels);
 	}
 
-	public String getChem() {
+	public ArrayList<String> getChem() {
 		return Chem;
 	}
 
 	public void setChem(String chem) {
-		Chem = chem;
+		if (chem == null ||Chem.contains(chem)) {
+			return;
+		}
+		Chem.add(chem);
 	}
 
 	public String getVolts() {
@@ -158,7 +183,13 @@ public class Adapter {
 		CADPrice = convertCodeToCADPrice(PriceCode);
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Adapter [SKU=" + SKU + ", UsedIn=" + UsedIn + ", Title=" + Title + ", Company=" + Company
+				+ ", BatteryModels=" + BatteryModels + ", Chem=" + Chem + ", Volts=" + Volts + ", mAh=" + mAh
+				+ ", Category=" + Category + ", PriceCode=" + PriceCode + ", USPrice=" + USPrice + ", CADPrice="
+				+ CADPrice + "]";
+	}
 	
 	
 }

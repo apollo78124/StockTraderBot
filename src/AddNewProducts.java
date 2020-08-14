@@ -1,6 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.openqa.selenium.By;
@@ -10,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class AddNewProducts {
 
-	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		Scanner inFile1;
 		String userName = "";
@@ -18,6 +22,7 @@ public class AddNewProducts {
 		String mainUrl = "";
 		String productUrl = "";
 		ArrayList<String> adapters = new ArrayList<String>();
+		
 		System.setProperty("webdriver.chrome.driver", 
 				"./chromedriver.exe");
 		
@@ -37,16 +42,16 @@ public class AddNewProducts {
 		
 		WebElement logInButton = driver1.findElement(By.id("login-form"));
 		logInButton.submit();
-		
-		inFile1 = new Scanner(new File("NewAdapterId.txt"));
-		while(inFile1.hasNextLine()) {
-            adapters.add(inFile1.nextLine());
-        }
-		inFile1.close();
+		ProcessFiles dataProcessor = new ProcessFiles();
+		HashMap<String, Adapter> processedData = dataProcessor.getData();
 		
 		Thread.sleep(4000);
-		
-		for(String adapterTitle : adapters) {
+		Iterator hmIterator = processedData.entrySet().iterator(); 
+		  
+  
+        while (hmIterator.hasNext()) { 
+            Map.Entry mapElement = (Map.Entry)hmIterator.next(); 
+            System.out.println(mapElement.getValue().toString());
 			try {
 				
 				driver1.get(productUrl);
@@ -88,6 +93,7 @@ public class AddNewProducts {
 				Thread.sleep(4000);
 			} finally {
 			}
+			*/
 		}
 	}
 
