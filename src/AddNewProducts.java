@@ -38,7 +38,7 @@ public class AddNewProducts {
 		WebElement logInButton = driver1.findElement(By.id("login-form"));
 		logInButton.submit();
 		
-		inFile1 = new Scanner(new File("ExistingAdapter.txt"));
+		inFile1 = new Scanner(new File("NewAdapterId.txt"));
 		while(inFile1.hasNextLine()) {
             adapters.add(inFile1.nextLine());
         }

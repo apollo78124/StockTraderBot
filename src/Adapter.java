@@ -9,6 +9,8 @@ public class Adapter {
 	public String mAh;
 	public String Category;
 	public String PriceCode;
+	public String USPrice;
+	public String CADPrice;
 	
 	public Adapter(String sKU, String usedIn, String company, String batteryModels, String chem, String volts,
 			String mAh, String category, String priceCode) {
@@ -22,6 +24,65 @@ public class Adapter {
 		Category = category;
 		PriceCode = priceCode;
 	}
+	
+	public String convertCodeToCADPrice(String code) {
+		switch (code) {
+			case "A":
+				return "$49";
+			case "B":
+				return "$92";
+			case "C":
+				return "$119";
+			case "D":
+				return "$157";
+			case "E":
+				return "$173";
+			case "F":
+				return "$184";
+			case "G":
+				return "$200";
+			case "H":
+				return "$211";
+			case "I":
+				return "$221";
+			case "J":
+				return "$232";
+			case "K":
+				return "$491";
+				default: 
+					return "Contact Cadex Or Representative";
+		}
+	}
+	
+	public String convertCodeToUSPrice(String code) {
+		switch (code) {
+			case "A":
+				return "$38";
+			case "B":
+				return "$70";
+			case "C":
+				return "$92";
+			case "D":
+				return "$146";
+			case "E":
+				return "$162";
+			case "F":
+				return "$173";
+			case "G":
+				return "$184";
+			case "H":
+				return "$194";
+			case "I":
+				return "$205";
+			case "J":
+				return "$216";
+			case "K":
+				return "$459" ;
+				default: 
+					return "Contact Cadex Or Representative";
+		}
+	}
+	
 
 	public String getSKU() {
 		return SKU;
@@ -93,6 +154,8 @@ public class Adapter {
 
 	public void setPriceCode(String priceCode) {
 		PriceCode = priceCode;
+		USPrice = convertCodeToUSPrice(PriceCode);
+		CADPrice = convertCodeToCADPrice(PriceCode);
 	}
 	
 	
