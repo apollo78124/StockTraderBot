@@ -20,7 +20,7 @@ public class ProcessFiles {
 		    description = description.replaceAll("FOR",",");
 		    String[] descriptionArray = description.split(",");
 		    if (descriptionArray.length > 4)
-		    	System.out.println("\nAlert String too long\n");
+		    	System.out.println("\nAlert String too long in " + data[0]);
 		    String title = descriptionArray[1].trim();
 		    title = toTitleCase(title.toLowerCase() + " Adapter");
 
@@ -31,37 +31,50 @@ public class ProcessFiles {
 		    try {
 			    temp.setCompany(data[3]);
 		    } catch(Exception e) {
-		    	
+		    	System.out.println("Problem 3 at " + temp.getSKU());
+		    	System.out.println(e);
 		    }
 		    try {
 		    	temp.setUsedIn(data[4]);
 		    } catch(Exception e) {
-		    	
+
+		    	System.out.println("Problem 4 at " + temp.getSKU());
+		    	System.out.println(e);
 		    }
 		    try {
 		    	temp.setBatteryModels(data[5]);
 		    } catch(Exception e) {
-		    	
+
+		    	System.out.println("Problem 5 at " + temp.getSKU());
+		    	System.out.println(e);
 		    }
 		    try {
 		    	temp.setChem(data[6]);
 		    } catch(Exception e) {
-		    	
+
+		    	System.out.println("Problem 6 at " + temp.getSKU());
+		    	System.out.println(e);
 		    }
 		    try {
 		    	temp.setVolts(data[7]);
 		    } catch(Exception e) {
-		    	
+
+		    	System.out.println("Problem 7 at " + temp.getSKU());
+		    	System.out.println(e);
 		    }
 		    try {
 		    	temp.setmAh(data[8]);
 		    } catch(Exception e) {
-		    	
+
+		    	System.out.println("Problem 8 at " + temp.getSKU());
+		    	System.out.println(e);
 		    }
 		    try {
 		    	temp.setPriceCode(data[9]);
 		    } catch(Exception e) {
-		    	
+
+		    	System.out.println("Problem 9 at " + temp.getSKU());
+		    	System.out.println(e);
 		    }
 		    if (!adapters.containsKey(temp.getSKU())) {
 			    adapters.put(temp.getSKU(), temp);

@@ -22,32 +22,33 @@ public class Adapter {
 	public Adapter() {
 		Company = new ArrayList<String>();
 		BatteryModels = new ArrayList<String>();
+		Chem = new ArrayList<String>();
 	}
 	
 	public String convertCodeToCADPrice(String code) {
 		switch (code) {
 			case "A":
-				return "$49";
+				return "49";
 			case "B":
-				return "$92";
+				return "92";
 			case "C":
-				return "$119";
+				return "119";
 			case "D":
-				return "$157";
+				return "157";
 			case "E":
-				return "$173";
+				return "173";
 			case "F":
-				return "$184";
+				return "184";
 			case "G":
-				return "$200";
+				return "200";
 			case "H":
-				return "$211";
+				return "211";
 			case "I":
-				return "$221";
+				return "221";
 			case "J":
-				return "$232";
+				return "232";
 			case "K":
-				return "$491";
+				return "491";
 				default: 
 					return "Contact Cadex Or Representative";
 		}
@@ -56,27 +57,27 @@ public class Adapter {
 	public String convertCodeToUSPrice(String code) {
 		switch (code) {
 			case "A":
-				return "$38";
+				return "38";
 			case "B":
-				return "$70";
+				return "70";
 			case "C":
-				return "$92";
+				return "92";
 			case "D":
-				return "$146";
+				return "146";
 			case "E":
-				return "$162";
+				return "162";
 			case "F":
-				return "$173";
+				return "173";
 			case "G":
-				return "$184";
+				return "184";
 			case "H":
-				return "$194";
+				return "194";
 			case "I":
-				return "$205";
+				return "205";
 			case "J":
-				return "$216";
+				return "216";
 			case "K":
-				return "$459" ;
+				return "459" ;
 				default: 
 					return "Contact Cadex Or Representative";
 		}
