@@ -66,12 +66,12 @@ public class VideoToMP3Second {
 		String skipButton = "Skip this page (no tags)";
 		Scanner scn = new Scanner(System.in);
 		boolean pageTurn = false;
-		
+		System.setProperty("webdriver.chrome.driver", 
+				"chromedriver.exe");
 		String[] links = new String[1000];
         String[] temp= new String[0];
         
-        //delete
-        inFile1 = new Scanner(new File("downloadLink.txt"));
+        inFile1 = new Scanner(new File("../downloadLink.txt"));
         
         int i = 0;
         while(inFile1.hasNextLine()) {
@@ -85,32 +85,24 @@ public class VideoToMP3Second {
         
         links = temp;
         inFile1.close();
-        
+		WebDriver driver = new ChromeDriver();
 		for (i = 0; i < links.length; i++) {
 			try {
 		         
-		    	  System.setProperty("webdriver.chrome.driver", 
-							"chromedriver.exe");
-					WebDriver driver = new ChromeDriver();;
-					try {
+					driver.get("https://ytmp3.cc/");
+					WebElement url = driver.findElement(By.id("input"));
+					url.click();
+					url.sendKeys(links[i]);
+					WebElement convertForm = driver.findElement(By.id("submit"));
+					convertForm.submit();
+					Thread.sleep(3000);
+					WebElement download = driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[1]/div[3]/a[1]"));
+					download.click();
 						
-						driver.get("https://ytmp3.cc/");
-						WebElement url = driver.findElement(By.id("input"));
-						url.click();
-						url.sendKeys(links[i]);
-						WebElement convertForm = driver.findElement(By.id("submit"));
-						convertForm.submit();
-						Thread.sleep(1500);
-						//WebElement download = driver.findElement(By.id("download"));
-						//download.click();
-						
-					} catch (Exception e) {
-						System.out.println("Thread " +  links[i] + " interrupted.");
-					}
 					
-		    	  
 		      } catch (Exception e) {
 		         System.out.println("Thread " +  links[i] + " interrupted.");
+		         driver = new ChromeDriver();
 		      }
 		      System.out.println("Thread " +  links[i] + " exiting.");
 		}
