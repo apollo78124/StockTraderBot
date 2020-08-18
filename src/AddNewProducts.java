@@ -57,11 +57,10 @@ public class AddNewProducts {
 				
 				driver1.get(newAdapterUrl);
 				Thread.sleep(3000);
-				/**
+				
 				//Title
 				WebElement titleInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[1]/div[2]/input"));
 				titleInput.sendKeys(tempAdapter.getTitle());
-				
 				
 				//Add C7400
 				WebElement addRelatedProduct = driver1.findElement(By.xpath("//*[@id=\"fields-productRelatedProducts\"]/div[2]"));
@@ -142,38 +141,177 @@ public class AddNewProducts {
 				//Canadian Price
 				WebElement cadPriceInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[2]/div/div[3]/div[2]/div[2]/input"));
 				cadPriceInput.sendKeys(tempAdapter.CADPrice);
-				*/
+				
+				
 				/**
 				 * Product Description
 				 */
-				
 				WebElement productDescription = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[6]/div[2]/div/div[2]"));
 				//productDescription.click();
-				for(String company : tempAdapter.getCompany()) {
+				
+				ArrayList<String> companies = tempAdapter.getCompany();
+				for(String company : companies) {
 					productDescription.sendKeys(company + " ");
 				}
+				
+				
+				ArrayList<String> batteryModels = tempAdapter.getBatteryModels();
 				int i = 0;
-				for(String battery : tempAdapter.getBatteryModels()) {
-					productDescription.sendKeys(battery);
-					if (i > 0) {
+				for(String battery : batteryModels) {
+					if (i == 0) {
+						productDescription.sendKeys("" + battery);
+					} else {
+						productDescription.sendKeys(battery);
+					}
+					if (i < batteryModels.size() - 1) {
 						productDescription.sendKeys(", ");
 					}
 					i++;
 				}
-				productDescription.sendKeys("\n");
+				ArrayList<String> chemList = tempAdapter.getChem();
+				productDescription.sendKeys("Chemistry: ");
 				i = 0;
-				for(String chem : tempAdapter.getChem()) {
-					productDescription.sendKeys("Chemistry: " + chem);
-					if (i > 0) {
+				for(String chem : chemList) {
+					productDescription.sendKeys(chem);
+					if (i < chemList.size() - 1) {
+						productDescription.sendKeys(", ");
+					}
+					i++;
+				}
+				
+				ArrayList<String> voltsList = tempAdapter.getVolts();
+				productDescription.sendKeys("\nVoltage: ");
+				i = 0;
+				for(String volt : voltsList) {
+					productDescription.sendKeys(volt + " V");
+					if (i < voltsList.size() - 1) {
+						productDescription.sendKeys(", ");
+					}
+					i++;
+				}
+				
+				
+				productDescription.sendKeys("\nCapacity: ");
+				ArrayList<String> capacityList = tempAdapter.getmAh();
+				i = 0;
+				for(String capacity : capacityList) {
+					productDescription.sendKeys(capacity + " mAh");
+					if (i < capacityList.size() - 1) {
 						productDescription.sendKeys(", ");
 					}
 					i++;
 				}
 				productDescription.sendKeys("\n");
+
+				productDescription.sendKeys("for ");
+				i = 0;
+				for(String company : companies) {
+					productDescription.sendKeys(company);
+					if (i < companies.size() - 1) {
+						productDescription.sendKeys(", ");
+					}
+					i++;
+				}
+				productDescription.sendKeys(" ");
+				ArrayList<String> usedInList = tempAdapter.getUsedIn();
+				i = 0;
+				for(String usedIn : usedInList) {
+					productDescription.sendKeys(usedIn);
+					if (i < usedInList.size() - 1) {
+						productDescription.sendKeys(", ");
+					}
+					i++;
+				}
+				productDescription.sendKeys("Ships in 2 weeks");
+				
+				
+				//Adapter details
+				titleInput.sendKeys("");
+				WebElement adapterDetailsTab = driver1.findElement(By.xpath("//*[@id=\"tabs\"]/ul/li[2]"));
+				adapterDetailsTab.click();
+				WebElement detailsInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[2]/div[1]/div[2]/input"));
+				
+				for(String company : companies) {
+					detailsInput.sendKeys(company + " ");
+				}
+				
+				detailsInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[2]/input"));
+				i = 0;
+				for(String usedIn : usedInList) {
+					detailsInput.sendKeys(usedIn);
+					if (i < usedInList.size() - 1) {
+						detailsInput.sendKeys(", ");
+					}
+					i++;
+				}
+				
+				detailsInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[2]/div[3]/div[2]/input"));
+				
+				i = 0;
+				for(String battery : batteryModels) {
+					if (i == 0) {
+						detailsInput.sendKeys("" + battery);
+					} else {
+						detailsInput.sendKeys(battery);
+					}
+					if (i < batteryModels.size() - 1) {
+						detailsInput.sendKeys(", ");
+					}
+					i++;
+				}
+				
+				detailsInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[2]/div[4]/div[2]/input"));
+				
+				i = 0;
+				for(String chem : chemList) {
+					detailsInput.sendKeys(chem);
+					if (i < chemList.size() - 1) {
+						detailsInput.sendKeys(", ");
+					}
+					i++;
+				}
+				
+				detailsInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[2]/div[5]/div[2]/input"));
+				
+				i = 0;
+				for(String volt : voltsList) {
+					detailsInput.sendKeys(volt + " V");
+					if (i < voltsList.size() - 1) {
+						detailsInput.sendKeys(", ");
+					}
+					i++;
+				}
+				
+				detailsInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[2]/div[6]/div[2]/input"));
+				
+				i = 0;
+				for(String capacity : capacityList) {
+					detailsInput.sendKeys(capacity + " mAh");
+					if (i < capacityList.size() - 1) {
+						detailsInput.sendKeys(", ");
+					}
+					i++;
+				}
+				
+				detailsInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[2]/div[7]/div[2]/input"));
+				
+				i = 0;
+				for(String category : tempAdapter.getCategory()) {
+					detailsInput.sendKeys(category);
+					if (i < capacityList.size() - 1) {
+						detailsInput.sendKeys(", ");
+					}
+					i++;
+				}
+				
+				detailsInput = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[2]/div[1]/div/div[1]/div[2]/div[2]/div[8]/div[2]/input"));
+				detailsInput.sendKeys(tempAdapter.getPriceCode());
+				
+				
 				
 				//Saving
 				WebElement saveButton = driver1.findElement(By.xpath("/html/body/div[1]/div/div[3]/main/form/div[1]/header/div[2]/div[2]/input"));
-				//saveButton.click();
+				saveButton.click();
 				Thread.sleep(4000);
 				
 				
@@ -181,8 +319,6 @@ public class AddNewProducts {
 			} catch (Exception e) {
 				System.out.println("Adapter " + tempAdapter.getSKU()+ " didn't finish correctly");
 				System.out.println(e);
-				Thread.sleep(80000);
-				/**
 				driver1.close();
 				
 				driver1 = new ChromeDriver();
@@ -198,7 +334,6 @@ public class AddNewProducts {
 				logInButton = driver1.findElement(By.id("login-form"));
 				logInButton.submit();
 				Thread.sleep(4000);
-				*/
 			} finally {
 			}
 		}

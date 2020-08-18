@@ -2,17 +2,17 @@ import java.util.ArrayList;
 
 public class Adapter {
 	public String SKU;
-	public String UsedIn;
 	public String Title;
 	public String Status;
 	
 
+	public ArrayList<String> UsedIn;
 	public ArrayList<String> Company;
 	public ArrayList<String> BatteryModels;
 	public ArrayList<String> Chem;
-	public String Volts;
-	public String mAh;
-	public String Category;
+	public ArrayList<String> Volts;
+	public ArrayList<String> mAh;
+	public ArrayList<String> Category;
 	
 
 	public String PriceCode;
@@ -20,9 +20,13 @@ public class Adapter {
 	public String CADPrice;
 	
 	public Adapter() {
+		UsedIn = new ArrayList<String>();
 		Company = new ArrayList<String>();
 		BatteryModels = new ArrayList<String>();
 		Chem = new ArrayList<String>();
+		Volts = new ArrayList<String>();
+		mAh = new ArrayList<String>();
+		Category = new ArrayList<String>();
 	}
 	
 	public String convertCodeToCADPrice(String code) {
@@ -36,7 +40,7 @@ public class Adapter {
 			case "D":
 				return "157";
 			case "E":
-				return "173";
+				return "173"; 
 			case "F":
 				return "184";
 			case "G":
@@ -109,12 +113,15 @@ public class Adapter {
 		SKU = sKU;
 	}
 
-	public String getUsedIn() {
+	public ArrayList<String> getUsedIn() {
 		return UsedIn;
 	}
 
 	public void setUsedIn(String usedIn) {
-		UsedIn = usedIn;
+		if (usedIn == null || UsedIn.contains(usedIn)) {
+			return;
+		}
+		UsedIn.add(usedIn);
 	}
 
 	public ArrayList<String> getCompany() {
@@ -150,28 +157,39 @@ public class Adapter {
 		Chem.add(chem);
 	}
 
-	public String getVolts() {
+	public ArrayList<String> getVolts() {
 		return Volts;
 	}
 
 	public void setVolts(String volts) {
-		Volts = volts;
+		if (volts == null ||Volts.contains(volts)) {
+			return;
+		}
+		volts = volts.replaceAll(",",".");
+		Volts.add(volts);
 	}
 
-	public String getmAh() {
+	public ArrayList<String> getmAh() {
 		return mAh;
 	}
 
 	public void setmAh(String mAh) {
-		this.mAh = mAh;
+		if (mAh == null || this.mAh.contains(mAh)) {
+			return;
+		}
+		mAh = mAh.replaceAll(",",".");
+		this.mAh.add(mAh);
 	}
 
-	public String getCategory() {
+	public ArrayList<String> getCategory() {
 		return Category;
 	}
 
 	public void setCategory(String category) {
-		Category = category;
+		if (Category == null || Category.contains(category)) {
+			return;
+		}
+		Category.add(category);
 	}
 
 	public String getPriceCode() {

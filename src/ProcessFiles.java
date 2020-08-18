@@ -1,17 +1,14 @@
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class ProcessFiles {
 	
 	public HashMap<String, Adapter> getData() throws IOException {
 		// TODO Auto-generated method stub
 		HashMap<String, Adapter> adapters = new HashMap<String, Adapter> ();
-		BufferedReader csvReader = new BufferedReader(new FileReader("../newadapters.csv"));
+		BufferedReader csvReader = new BufferedReader(new FileReader(""));
 		String row;
 		
 		while ((row = csvReader.readLine()) != null) {
@@ -20,7 +17,7 @@ public class ProcessFiles {
 		    description = description.replaceAll("FOR",",");
 		    String[] descriptionArray = description.split(",");
 		    if (descriptionArray.length > 4)
-		    	System.out.println("\nAlert String too long in " + data[0]);
+		    	System.out.println("\nAlert title string too long in " + data[0]);
 		    String title = descriptionArray[1].trim();
 		    title = toTitleCase(title.toLowerCase() + " Adapter");
 
@@ -80,9 +77,13 @@ public class ProcessFiles {
 			    adapters.put(temp.getSKU(), temp);
 		    } else {
 		    	Adapter temp1 = adapters.get(temp.getSKU());
-		    	temp1.setBatteryModels(data[5]);
+		    	
 		    	temp1.setCompany(data[3]);
-		    	//temp1.setChem(data[6]);
+		    	temp1.setUsedIn(data[4]);
+		    	temp1.setBatteryModels(data[5]);
+		    	temp1.setChem(data[6]);
+		    	temp1.setVolts(data[7]);
+		    	temp1.setmAh(data[8]);
 		    }
 		}
 		
