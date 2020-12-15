@@ -96,7 +96,7 @@ public class VideoToMP3Second {
 					url.sendKeys(links[i]);
 					WebElement convertForm = driver.findElement(By.id("submit"));
 					convertForm.submit();
-					Thread.sleep(6000);
+					Thread.sleep(10000);
 					WebElement download = driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[1]/div[3]/a[1]"));
 					download.click();
 						

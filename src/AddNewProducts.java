@@ -16,13 +16,10 @@ public class AddNewProducts {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO Auto-generated method stub
-		Scanner inFile1;
-		String userName = "";
-		String password = "";
-		String mainUrl = "";
-		String productUrl = "";
-		String newAdapterUrl = "";
-		ArrayList<String> adapters = new ArrayList<String>();
+		String userName = "davidlee78124@gmail.com";
+		String password = "callofduty98";
+		String mainUrl = "https://10885d7a64.nxcli.net/admin/";
+		String newAdapterUrl = "https://10885d7a64.nxcli.net/admin/commerce/products/adapters/new";
 		
 		System.setProperty("webdriver.chrome.driver", 
 				"./chromedriver.exe");

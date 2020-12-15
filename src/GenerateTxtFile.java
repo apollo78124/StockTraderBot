@@ -97,7 +97,7 @@ public class GenerateTxtFile {
 		
 		Iterator hmIterator = adapters.entrySet().iterator(); 
 		BufferedWriter productDescription = new BufferedWriter( 
-                new FileWriter("PurifiedData.txt"));
+                new FileWriter("../PurifiedData.txt"));
 		while (hmIterator.hasNext()) { 
             Map.Entry mapElement = (Map.Entry)hmIterator.next();
             Adapter tempAdapter = (Adapter) mapElement.getValue();
